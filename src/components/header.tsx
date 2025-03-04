@@ -1,4 +1,4 @@
-import React, { SetStateAction } from "react";
+import React from "react";
 import SearchBar from "./search-bar";
 import Categories from "./categories";
 import { Link } from "react-router-dom";

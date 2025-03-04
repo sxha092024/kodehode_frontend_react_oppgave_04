@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Location, useLocation } from "react-router-dom";
 
 interface PageChangeEffectProps {
-  func: Function;
+  func: <T>(location: Location<T>) => void;
 }
 
 const PageChangeEffect = ({
@@ -12,7 +12,7 @@ const PageChangeEffect = ({
 
   useEffect(() => {
     func(location);
-  }, [location.pathname, location.search]);
+  }, [location.pathname, location.search, func, location]);
 
   return null;
 };

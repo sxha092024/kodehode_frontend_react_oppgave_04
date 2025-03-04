@@ -1,4 +1,4 @@
-export function storeData(key: string, data: Object) {
+export function storeData(key: string, data: object) {
   const namespacedKey = `gutendexlookup:${key}`;
 
   localStorage.setItem(namespacedKey, JSON.stringify(data));

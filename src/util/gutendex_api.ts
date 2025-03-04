@@ -16,37 +16,33 @@ interface Param {
 }
 
 export class AuthorYear implements Param {
-  start: Number | null = null;
-  end: Number | null = null;
+  start: number | null = null;
+  end: number | null = null;
   toQueryParam(): string {
     // we could probably flip this to start === null || end === null as that is probably more common
     if (this.start !== null && this.end !== null) {
       return `author_year_start=${this.start}&author_year_end=${this.end}`;
     } else {
       let queryParam = "";
-      this.start !== null
-        ? (queryParam += `author_year_start=${this.start}`)
-        : undefined;
-      this.end !== null
-        ? (queryParam += `author_year_end=${this.end}`)
-        : undefined;
+      if (this.start !== null) queryParam += `author_year_start=${this.start}`;
+      if (this.end !== null) queryParam += `author_year_end=${this.end}`;
       return queryParam;
     }
   }
 }
 
 export class Langauge implements Param {
-  codes: Set<String>; // incurs some runtime cost, it may be better to de-dup by hand
+  codes: Set<string>; // incurs some runtime cost, it may be better to de-dup by hand
   toQueryParam(): string {
     const queryParam = "languages=";
     const langs = Array.prototype.concat(this.codes).join(",");
     return queryParam + langs;
   }
 
-  constructor(langauges: String) {
+  constructor(langauges: string) {
     // gyu, Globaly, stickY, Unicode
     const matches = langauges.matchAll(new RegExp(",{0,1}([A-z]{2}?)", "gyu"));
-    const found: String[] = [];
+    const found: string[] = [];
     for (const match of matches) {
       found.push(match[0]);
     }

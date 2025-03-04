@@ -54,7 +54,7 @@ export default function ItemList({ initialUrl }: ItemListProps) {
       queryKey: ["gutendexSearchResult"],
       queryFn: fetchBooks,
       initialPageParam: null,
-      getNextPageParam: (last, all) => last.next || null,
+      getNextPageParam: (last) => last.next || null,
     },
     queryClient,
   );
@@ -109,7 +109,7 @@ export default function ItemList({ initialUrl }: ItemListProps) {
       });
     };
     handleLocationChange();
-  }, [location]);
+  }, [location, queryClient, refetch]);
 
   return isLoading ? (
     <>

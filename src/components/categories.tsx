@@ -36,7 +36,7 @@ function Categories() {
     navigate(`/results${encodedParams}`);
   };
 
-  function handleShow(_: any) {
+  function handleShow() {
     setShow((show) => !show);
   }
 

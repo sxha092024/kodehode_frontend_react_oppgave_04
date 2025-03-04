@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/header";
 import { BrowserRouter, Location, Route, Routes } from "react-router-dom";
 import Results from "./pages/results";
-import { QueryClientContextProvider } from "./util/query-client-context";
+import { QueryClientContextProvider } from "./util/query-client-context-provider";
 import PageChangeEffect from "./util/page-change-effect";
 import Details from "./pages/details";
 
@@ -11,7 +11,7 @@ function App() {
   const [dvh, setDvh] = useState(100);
   const [headerMT, setHeaderMT] = useState(16);
 
-  function handlePageTransition(location?: Location<any>) {
+  function handlePageTransition(location?: Location) {
     if (location !== undefined) {
       if (location.pathname === "/") {
         setDvh(100);

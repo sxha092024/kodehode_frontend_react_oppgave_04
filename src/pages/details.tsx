@@ -1,13 +1,8 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Book, MimeType, MimeTypeEnum } from "../util/gutendex_api";
+import { Book, MimeTypeEnum } from "../util/gutendex_api";
 import { useQuery } from "@tanstack/react-query";
 import { Favourite } from "../components/favourites";
 import { retreiveData, storeData } from "../util/localstorage";
-
-interface BookDetailsProps {
-  id: string;
-}
 
 async function fetchBookDetails(id: string) {
   const res = await fetch(`https://gutendex.com/books/${id}`);
@@ -110,9 +105,9 @@ function Details() {
         <ul className="grid grid-cols-3 mb-2 mt-2 ">
           {Object.entries(MimeTypeEnum)
             .filter((nval) => {
-              const [_, value] = nval;
               return (
-                value !== MimeTypeEnum.jpeg && (data?.formats[value] ?? false)
+                nval[1] !== MimeTypeEnum.jpeg &&
+                (data?.formats[nval[1]] ?? false)
               );
             })
             .map((nval) => {
@@ -134,13 +129,13 @@ function Details() {
           type="button"
           className="bg-slate-800 px-4 pb-1 pt-1 rounded-3xl border-2 border-slate-700 hover:cursor-pointer"
           onClick={() => {
-            id!!
-              ? handleFavouriteClick({
-                  id: id!,
-                  authors: data?.authors!,
-                  title: data?.title!,
-                })
-              : {};
+            if (id) {
+              handleFavouriteClick({
+                id: id!,
+                authors: data!.authors!,
+                title: data!.title!,
+              });
+            }
           }}
         >
           ⭐ Add to favourites

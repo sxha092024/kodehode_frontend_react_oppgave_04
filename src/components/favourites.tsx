@@ -36,7 +36,7 @@ function Favourites() {
     navigate(`/details/${favourite}`);
   };
 
-  function handleShow(_: any) {
+  function handleShow() {
     setFavourites(
       retreiveData<Favourite[]>("favourites") ?? ([] as Favourite[]),
     );

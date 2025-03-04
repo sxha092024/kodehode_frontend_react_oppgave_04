@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
