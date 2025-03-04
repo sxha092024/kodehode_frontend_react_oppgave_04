@@ -15,7 +15,7 @@ function App() {
     if (location !== undefined) {
       if (
         location.pathname === "/" ||
-        location.pathname === "/kodehode_frontend_react_oppgave_04"
+        location.pathname === "/kodehode_frontend_react_oppgave_04/"
       ) {
         setDvh(100);
         setHeaderMT(16);
