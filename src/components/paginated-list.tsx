@@ -127,47 +127,55 @@ export default function ItemList({ initialUrl }: ItemListProps) {
     <>
       <div className="max-h-[800px] overflow-y-auto border-2 border-indigo-300 p-4">
         <ul>
-          {data?.pages.map((page) =>
-            page.results.map((book, index) => (
-              <li
-                key={book.id}
-                ref={index === page.results.length - 1 ? lastItemRef : null}
-                className="mt-3 odd:bg-orange-900 even:bg-green-900"
-              >
-                <Link
-                  to={`/details/${book.id}`}
-                  className="block p-2 hover:bg-sky-950 transition-all duration-250 ease-in-out"
+          {data?.pages.map((page) => {
+            if (page.count !== 0) {
+              return page.results.map((book, index) => (
+                <li
+                  key={book.id}
+                  ref={index === page.results.length - 1 ? lastItemRef : null}
+                  className="mt-3 odd:bg-orange-900 even:bg-green-900"
                 >
-                  <div>
-                    <h3>
-                      {book.title} -{" "}
-                      {book.authors
-                        .map((author) => {
-                          let year = "";
-                          if (author.birth_year && author.death_year) {
-                            year = `(${author.birth_year} - ${author.death_year})`;
-                          } else if (
-                            author.birth_year &&
-                            !(author.death_year ?? false)
-                          ) {
-                            year = `(${author.birth_year} - ????)`;
-                          } else if (
-                            !(author.birth_year ?? false) &&
-                            author.death_year
-                          ) {
-                            year = `(???? - ${author.death_year})`;
-                          }
-                          return `${author.name} ${year}`.trimEnd();
-                        })
-                        .join(", ")
-                        .trimEnd()}
-                    </h3>
-                    <p>{book.summaries}</p>
-                  </div>
-                </Link>
-              </li>
-            )),
-          )}
+                  <Link
+                    to={`/details/${book.id}`}
+                    className="block p-2 hover:bg-sky-950 transition-all duration-250 ease-in-out"
+                  >
+                    <div>
+                      <h3>
+                        {book.title} -{" "}
+                        {book.authors
+                          .map((author) => {
+                            let year = "";
+                            if (author.birth_year && author.death_year) {
+                              year = `(${author.birth_year} - ${author.death_year})`;
+                            } else if (
+                              author.birth_year &&
+                              !(author.death_year ?? false)
+                            ) {
+                              year = `(${author.birth_year} - ????)`;
+                            } else if (
+                              !(author.birth_year ?? false) &&
+                              author.death_year
+                            ) {
+                              year = `(???? - ${author.death_year})`;
+                            }
+                            return `${author.name} ${year}`.trimEnd();
+                          })
+                          .join(", ")
+                          .trimEnd()}
+                      </h3>
+                      <p>{book.summaries}</p>
+                    </div>
+                  </Link>
+                </li>
+              ));
+            } else {
+              return (
+                <li>
+                  <p>No results found</p>
+                </li>
+              );
+            }
+          })}
         </ul>
 
         {isFetchingNextPage && <div>Loading more...</div>}
