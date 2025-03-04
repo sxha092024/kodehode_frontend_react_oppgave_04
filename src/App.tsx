@@ -33,7 +33,7 @@ function App() {
         if (breakpoint !== "xs") {
           setDvh(33);
         } else {
-          setDvh(80);
+          setDvh(100);
         }
         setHeaderMT(0);
       }
