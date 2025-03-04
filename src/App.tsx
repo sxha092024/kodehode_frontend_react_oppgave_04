@@ -34,32 +34,7 @@ function App() {
           <Header dvh={dvh} mt={headerMT} />
           <Routes>
             <Route path="/results" element={<Results />}></Route>
-            <Route
-              path="/"
-              element={
-                <>
-                  {
-                    // TODO:
-                    // display results as list, paginate
-                    // | name, author, date [*] | // favourite
-                    // | name, author, date [ ] | // not favourite
-                    // |   <  [1] [2] [3]   >   |
-                    // |          ^^^           |
-                    // N.B: we should only build the *next* page upon explicit user interaction and then bubble that
-                    // up into a pagination-container component.
-                    // the pagination component should be able to memoize based on the unique url containing the query params
-                  }
-
-                  <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                  </p>
-
-                  <p className="read-the-docs">
-                    Click on the Vite and React logos to learn more
-                  </p>
-                </>
-              }
-            ></Route>
+            <Route path="/" element={<></>}></Route>
             <Route path="/details/:id" element={<Details />}></Route>
           </Routes>
         </BrowserRouter>
