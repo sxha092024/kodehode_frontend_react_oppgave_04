@@ -13,7 +13,10 @@ function App() {
 
   function handlePageTransition(location?: Location) {
     if (location !== undefined) {
-      if (location.pathname === "/") {
+      if (
+        location.pathname === "/" ||
+        location.pathname === "/kodehode_frontend_react_oppgave_04"
+      ) {
         setDvh(100);
         setHeaderMT(16);
       } else if (location.pathname.startsWith("/details")) {
