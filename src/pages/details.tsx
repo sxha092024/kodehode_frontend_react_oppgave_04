@@ -102,7 +102,7 @@ function Details() {
         </ul>
         <p className="mt-4 mb-2">Downloads: {data?.download_count}</p>
         <h2 className="text-2xl font-semibold mt-4">Formats</h2>
-        <ul className="grid grid-cols-3 mb-2 mt-2 ">
+        <ul className="xl:grid xl:grid-cols-3 mb-2 mt-2">
           {Object.entries(MimeTypeEnum)
             .filter((nval) => {
               return (

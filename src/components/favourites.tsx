@@ -45,7 +45,7 @@ function Favourites() {
 
   return (
     <>
-      <div>
+      <div className="mb-32 xl:mb-0">
         <h2
           className={`p-1 pl-20 pr-20 text-3xl font-semibold cursor-pointer select-none`}
           onClick={handleShow}
@@ -70,7 +70,7 @@ function Favourites() {
                 origin-top transition-all duration-300 ease-in-out 
                 last:rounded-bl-2xl first:rounded-tl-2xl nth-[3]:rounded-tr-2xl`}
                 >
-                  <p>{favourite.id}</p>
+                  <p>Gutendex id: {favourite.id}</p>
                   <p>{favourite.title}</p>
                   <p>
                     {favourite.authors.map((author) => author.name).join(", ")}

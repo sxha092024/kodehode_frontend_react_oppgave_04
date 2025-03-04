@@ -27,10 +27,10 @@ const Header = ({ dvh, mt }: React.PropsWithChildren<HeaderProps>) => {
         className={`flex flex-col justify-center items-center mt-${mt} transition-all duration-700 ease-in-out`}
         style={{ height: `${dvh}dvh` }}
       >
-        <h1 className={`text-8xl mb-8 font-black`}>
+        <h1 className={`md:text-8xl text-7xl mb-8 font-black`}>
           <Link to="/">Gutendex lookup</Link>
         </h1>
-        <nav className="flex justify-between">
+        <nav className="flex flex-col md:flex-row justify-between">
           <Categories />
           <SearchBar />
           <Favourites />
